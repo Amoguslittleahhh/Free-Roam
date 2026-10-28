@@ -1059,7 +1059,7 @@ public class ArtistView : MonoBehaviour
             {
                 var p = pts[i]; float o;
                 if (t < 0f) o = -0.006f * ks[l]; else if (liner) o = -0.006f;
-                else { float w = Mathf.Pow(Mathf.Sin(Mathf.PI * Mathf.Pow(t, 1.25f)), 0.6f); float fw = Mathf.Max(0f, -p.w); o = w * (bB + fw * bR * (0.5f + 0.5f * Mathf.Cos(2f * Mathf.PI * p.x / pitch)) + 0.0013f * Mathf.Sin(p.x * 83f + y * 57f + p.y * 40f) * Mathf.Sin(y * 131f + 1.7f * p.x * 30f)) + 0.0009f * Mathf.Sin(2f * Mathf.PI * cum[i] / 0.025f) * (Mathf.Exp(-Mathf.Pow(t / 0.08f, 2f)) + Mathf.Exp(-Mathf.Pow((1f - t) / 0.08f, 2f))); }
+                else { float w = Mathf.Pow(Mathf.Max(0f, Mathf.Sin(Mathf.PI * Mathf.Pow(t, 1.25f))), 0.6f); float fw = Mathf.Max(0f, -p.w); o = w * (bB + fw * bR * (0.5f + 0.5f * Mathf.Cos(2f * Mathf.PI * p.x / pitch)) + 0.0013f * Mathf.Sin(p.x * 83f + y * 57f + p.y * 40f) * Mathf.Sin(y * 131f + 1.7f * p.x * 30f)) + 0.0009f * Mathf.Sin(2f * Mathf.PI * cum[i] / 0.025f) * (Mathf.Exp(-Mathf.Pow(t / 0.08f, 2f)) + Mathf.Exp(-Mathf.Pow((1f - t) / 0.08f, 2f))); }
                 V.Add(new Vector3(p.x * f + p.z * o, y, p.y * f + p.w * o)); UV.Add(new Vector2(cum[i] * UVS, y * UVS));
             }
         }
